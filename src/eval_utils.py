@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics import roc_auc_score, log_loss
+from sklearn.metrics import roc_auc_score, log_loss, confusion_matrix, precision_recall_fscore_support
 
 def brier_score(y_true, y_prob):
     return np.mean((y_prob - y_true) ** 2)  
@@ -29,3 +29,10 @@ def offline_metrics(y_true, y_prob):
         "log_loss": log_loss(y_true, y_prob),
         "brier": brier_score(y_true, y_prob)
     }
+
+def decile_lift(y_true, y_prob, decile=10):
+    df = pd.DataFrame({"y": y_true, "p": y_prob})
+    df = df.sort_values("p", ascending=False)
+    n = len(df) // decile
+    top = df.head(n)
+    return {"top_decile_ctr": top.y.mean(), "overall_ctr": df.y.mean(), "n_top": len(top)}

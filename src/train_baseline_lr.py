@@ -9,11 +9,11 @@ import json
 from eval_utils import offline_metrics, calibration_table
 
 
-TRAIN = "../data/processed/train.csv"
-EVAL = "../data/processed/eval.csv"
-MODEL_OUT = "../models/logistic_regression.pkl"
-METRICS_OUT = "../reports/offline_metrics.json"
-CALIB_OUT = "../reports/calibration_table.csv"
+TRAIN = "data/processed/train.csv"
+EVAL = "data/processed/eval.csv"
+MODEL_OUT = "models/logistic_regression.pkl"
+METRICS_OUT = "reports/offline_metrics.json"
+CALIB_OUT = "reports/calibration_table.csv"
 
 
 

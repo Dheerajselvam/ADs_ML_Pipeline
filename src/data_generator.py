@@ -7,7 +7,7 @@ random.seed(42)
 
 
 N = 1000
-OUTPUT = "../data/raw/synthetic_ads.csv"
+OUTPUT = "data/raw/synthetic_ads.csv"
 
 
 ages = ["18-24","25-34","35-44","45+"]

@@ -2,9 +2,9 @@ import pandas as pd
 from sklearn.model_selection import train_test_split
 
 
-INPUT = "../data/raw/synthetic_ads.csv"
-TRAIN_OUT = "../data/processed/train.csv"
-EVAL_OUT = "../data/processed/eval.csv"
+INPUT = "data/raw/synthetic_ads.csv"
+TRAIN_OUT = "data/processed/train.csv"
+EVAL_OUT = "data/processed/eval.csv"
 
 
 CATEGORICAL = [
