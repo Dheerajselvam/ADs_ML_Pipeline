@@ -58,7 +58,7 @@ for name, info in results.items():
     preds = (probs >= 0.5).astype(int)
     lines.append("Confusion Matrix:\n" + str(confusion_matrix(y_true, preds)))
 
-lines.append("\nERROR ANALYSIS: sample disagreement examples (logistic vs gbt)\n")
+lines.append("\nERROR ANALYSIS: sample disagreement examples (logistic vs gbt) and (gbt vs dnn)\n")
 try:
     lprobs = results["logistic"]["y_prob"]
     gprobs = results["gbt"]["y_prob"]

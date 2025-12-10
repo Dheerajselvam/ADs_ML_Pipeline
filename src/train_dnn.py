@@ -3,8 +3,9 @@ import joblib
 from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
 from sklearn.feature_extraction import DictVectorizer
-from eval_utils import offline_metrics, calibration_table, prepare_dicts
+from eval_utils import offline_metrics, calibration_table
 import json
+from utils import prepare_dicts
 
 TRAIN = "data/processed/train.csv"
 EVAL = "data/processed/eval.csv"

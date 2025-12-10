@@ -1,9 +1,6 @@
 import numpy as np
 from sklearn.metrics import roc_auc_score, log_loss, confusion_matrix, precision_recall_fscore_support
 
-def to_dense(x):
-    return x.toarray()
-
 def brier_score(y_true, y_prob):
     return np.mean((y_prob - y_true) ** 2)  
 
@@ -39,18 +36,3 @@ def decile_lift(y_true, y_prob, decile=10):
     n = len(df) // decile
     top = df.head(n)
     return {"top_decile_ctr": top.y.mean(), "overall_ctr": df.y.mean(), "n_top": len(top)}
-
-def prepare_dicts(df):
-    features = []
-    for _, r in df.iterrows():
-        d = {
-            "age=" + str(r.age_bucket): 1,
-            "geo=" + str(r.geo): 1,
-            "interest=" + str(r.interests): 1,
-            "creative=" + str(r.creative_type): 1,
-            "device=" + str(r.device): 1,
-            "hour": float(r.hour_of_day),
-            "bid": float(r.bid)
-        }
-        features.append(d)
-    return features

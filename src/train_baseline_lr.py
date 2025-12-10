@@ -6,7 +6,8 @@ from joblib import dump
 import json
 
 
-from eval_utils import offline_metrics, calibration_table, prepare_dicts
+from eval_utils import offline_metrics, calibration_table
+from utils import prepare_dicts
 
 
 TRAIN = "data/processed/train.csv"

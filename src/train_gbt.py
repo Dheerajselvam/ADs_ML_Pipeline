@@ -4,7 +4,7 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
-from eval_utils import offline_metrics, calibration_table, prepare_dicts, to_dense
+from utils import prepare_dicts, to_dense
 import json
 
 TRAIN = "data/processed/train.csv"
