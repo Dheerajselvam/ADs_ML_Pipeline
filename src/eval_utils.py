@@ -36,3 +36,18 @@ def decile_lift(y_true, y_prob, decile=10):
     n = len(df) // decile
     top = df.head(n)
     return {"top_decile_ctr": top.y.mean(), "overall_ctr": df.y.mean(), "n_top": len(top)}
+
+def prepare_dicts(df):
+    features = []
+    for _, r in df.iterrows():
+        d = {
+            "age=" + str(r.age_bucket): 1,
+            "geo=" + str(r.geo): 1,
+            "interest=" + str(r.interests): 1,
+            "creative=" + str(r.creative_type): 1,
+            "device=" + str(r.device): 1,
+            "hour": float(r.hour_of_day),
+            "bid": float(r.bid)
+        }
+        features.append(d)
+    return features

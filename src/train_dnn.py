@@ -1,18 +1,17 @@
 import pandas as pd
 import joblib
-from sklearn.ensemble import HistGradientBoostingClassifier
-from sklearn.feature_extraction import DictVectorizer
+from sklearn.neural_network import MLPClassifier
 from sklearn.pipeline import Pipeline
-from sklearn.preprocessing import FunctionTransformer
+from sklearn.feature_extraction import DictVectorizer
 from eval_utils import offline_metrics, calibration_table, prepare_dicts
 import json
 
 TRAIN = "data/processed/train.csv"
 EVAL = "data/processed/eval.csv"
 BASELINE_PIPE = "models/logistic_regression.pkl"
-GBT_OUT = "models/gbt_model.pkl"
-METRICS_OUT = "reports/gbt_offline_metrics.json"
-CALIB_OUT = "reports/gbt_calibration_table.csv"
+DNN_OUT = "models/dnn_model.pkl"
+METRICS_OUT = "reports/dnn_offline_metrics.json"
+CALIB_OUT = "reports/dnn_calibration_table.csv"
 
 train = pd.read_csv(TRAIN)
 eval_ = pd.read_csv(EVAL)
@@ -22,27 +21,17 @@ y_train = train.clicked.values
 X_eval_dicts = prepare_dicts(eval_)
 y_eval = eval_.clicked.values
 
-
 vec = None
 try:
     baseline = joblib.load(BASELINE_PIPE)
     vec = baseline.named_steps["vec"]
-    print("✅ Reused DictVectorizer from baseline pipeline.")
+    print("✅ Reused DictVectorizer from baseline.")
 except Exception as e:
-    print("⚠️ Could not reuse baseline pipeline, creating new DictVectorizer. Error:", e)
+    print("⚠️ Could not reuse baseline pipeline; creating new DictVectorizer.", e)
     vec = DictVectorizer(sparse=True)
 
-
-def to_dense(x):
-    return x.toarray()
-
-gbt = HistGradientBoostingClassifier(max_iter=200, learning_rate=0.1)
-to_dense_transform = FunctionTransformer(to_dense, accept_sparse=True)
-pipe = Pipeline([
-            ("vec", vec),             
-            ("to_dense", to_dense_transform),       
-            ("gbt", gbt),
-        ])
+mlp = MLPClassifier(hidden_layer_sizes=(64,32), max_iter=200, random_state=42)
+pipe = Pipeline([("vec", vec), ("mlp", mlp)])
 
 pipe.fit(X_train_dicts, y_train)
 
@@ -50,8 +39,8 @@ y_prob = pipe.predict_proba(X_eval_dicts)[:, 1]
 metrics = offline_metrics(y_eval, y_prob)
 json.dump(metrics, open(METRICS_OUT, "w"), indent=2)
 
-
+import pandas as pd
 pd.DataFrame(calibration_table(y_eval, y_prob)).to_csv(CALIB_OUT, index=False)
-joblib.dump(pipe, GBT_OUT)
+joblib.dump(pipe, DNN_OUT)
 
-print("✅ GBT trained. Metrics:", metrics)
+print("✅ DNN (MLP) trained. Metrics:", metrics)

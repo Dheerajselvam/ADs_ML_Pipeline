@@ -6,7 +6,7 @@ from joblib import dump
 import json
 
 
-from eval_utils import offline_metrics, calibration_table
+from eval_utils import offline_metrics, calibration_table, prepare_dicts
 
 
 TRAIN = "data/processed/train.csv"
@@ -14,24 +14,6 @@ EVAL = "data/processed/eval.csv"
 MODEL_OUT = "models/logistic_regression.pkl"
 METRICS_OUT = "reports/offline_metrics.json"
 CALIB_OUT = "reports/calibration_table.csv"
-
-
-
-
-def prepare_dicts(df):
-    features = []
-    for _, r in df.iterrows():
-        d = {
-            "age=" + r.age_bucket: 1,
-            "geo=" + r.geo: 1,
-            "interest=" + r.interests: 1,
-            "creative=" + r.creative_type: 1,
-            "device=" + r.device: 1,
-            "hour": r.hour_of_day,
-            "bid": r.bid
-        }
-        features.append(d)
-    return features
 
 
 train = pd.read_csv(TRAIN)
