@@ -1,6 +1,9 @@
 import numpy as np
 from sklearn.metrics import roc_auc_score, log_loss, confusion_matrix, precision_recall_fscore_support
 
+def to_dense(x):
+    return x.toarray()
+
 def brier_score(y_true, y_prob):
     return np.mean((y_prob - y_true) ** 2)  
 

@@ -4,7 +4,7 @@ from sklearn.ensemble import HistGradientBoostingClassifier
 from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
-from eval_utils import offline_metrics, calibration_table, prepare_dicts
+from eval_utils import offline_metrics, calibration_table, prepare_dicts, to_dense
 import json
 
 TRAIN = "data/processed/train.csv"
@@ -31,10 +31,6 @@ try:
 except Exception as e:
     print("⚠️ Could not reuse baseline pipeline, creating new DictVectorizer. Error:", e)
     vec = DictVectorizer(sparse=True)
-
-
-def to_dense(x):
-    return x.toarray()
 
 gbt = HistGradientBoostingClassifier(max_iter=200, learning_rate=0.1)
 to_dense_transform = FunctionTransformer(to_dense, accept_sparse=True)
