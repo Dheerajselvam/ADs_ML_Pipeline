@@ -25,7 +25,7 @@ random.seed(42)
 np.random.seed(42)
 
 DATA_IN = "data/raw/synthetic_ads.csv"
-MODEL_PATH = "models/logistic_regression.pkl"
+MODEL_PATH = "models/logistic.pkl"
 OUT_JSON = "reports/ab_results.json"
 
 # Config

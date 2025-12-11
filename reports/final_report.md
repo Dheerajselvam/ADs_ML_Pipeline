@@ -1,3 +1,66 @@
+# Final Ads ML Report
+Generated: 2025-12-11T11:27:14.726750Z
+
+## 1) Offline Model Comparison
+
+```
+{
+  "auc": 0.5895247591217817,
+  "log_loss": 0.11984538533246777,
+  "brier": 0.025283367936654734
+}
+```
+
+## 2) A/B Test Summary
+
+```
+{
+  "n_total": 20000,
+  "treatment_pct": 0.5,
+  "expected_counts": {
+    "control": 10000,
+    "treatment": 10000
+  },
+  "summary": {
+    "control": {
+      "impressions": 9423,
+      "clicks": 255,
+      "revenue": 393.85,
+      "ctr": 0.027061445399554282,
+      "rpm": 41.796667727899816
+    },
+    "treatment": {
+      "impressions": 10577,
+      "clicks": 266,
+      "revenue": 406.63,
+      "ctr": 0.02514890800794176,
+      "rpm": 38.44473858371939
+    }
+  },
+  "sample_ratio_mismatch": {
+    "control_pct_diff": -0.0577,
+    "treatment_pct_diff": 0.0577,
+    "flag": true
+  },
+  "ctr_ztest": {
+    "z": -0.8476149143937818,
+    "p_value": 0.39665246554734845,
+    "p1": 0.02514890800794176,
+    "p2": 0.027061445399554282
+  },
+  "rpm_bootstrap": {
+    "mean_diff": -0.0033286081909941955,
+    "ci": [
+      -0.011061385424881205,
+      0.004385042914524896
+    ]
+  }
+}
+```
+
+## 3) RTB Simulation Summary
+
+```
 {
   "total_impressions_served": 1274,
   "total_revenue": 25.0,
@@ -186,3 +249,8 @@
     }
   ]
 }
+```
+
+## 4) Recommendations
+
+Do not deploy automatically; run longer experiment / check SRE issues

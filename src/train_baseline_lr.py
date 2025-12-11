@@ -9,44 +9,47 @@ import json
 from eval_utils import offline_metrics, calibration_table
 from utils import prepare_dicts
 
-
-TRAIN = "data/processed/train.csv"
-EVAL = "data/processed/eval.csv"
-MODEL_OUT = "models/logistic_regression.pkl"
-METRICS_OUT = "reports/offline_metrics.json"
-CALIB_OUT = "reports/calibration_table.csv"
-
-
-train = pd.read_csv(TRAIN)
-eval_ = pd.read_csv(EVAL)
+def lr_main():
+        TRAIN = "data/processed/train.csv"
+        EVAL = "data/processed/eval.csv"
+        MODEL_OUT = "models/logistic.pkl"
+        METRICS_OUT = "reports/offline_metrics.json"
+        CALIB_OUT = "reports/calibration_table.csv"
 
 
-X_train = prepare_dicts(train)
-y_train = train.clicked
+        train = pd.read_csv(TRAIN)
+        eval_ = pd.read_csv(EVAL)
 
 
-X_eval = prepare_dicts(eval_)
-y_eval = eval_.clicked
+        X_train = prepare_dicts(train)
+        y_train = train.clicked
 
 
-pipe = Pipeline([
-        ("vec", DictVectorizer(sparse=True)),
-        ("lr", LogisticRegression(max_iter=200))
-        ])
+        X_eval = prepare_dicts(eval_)
+        y_eval = eval_.clicked
 
 
-pipe.fit(X_train, y_train)
+        pipe = Pipeline([
+                ("vec", DictVectorizer(sparse=True)),
+                ("lr", LogisticRegression(max_iter=200))
+                ])
 
 
-y_prob = pipe.predict_proba(X_eval)[:, 1]
-metrics = offline_metrics(y_eval, y_prob)
-cal = calibration_table(y_eval, y_prob)
+        pipe.fit(X_train, y_train)
 
 
-pd.DataFrame(cal).to_csv(CALIB_OUT, index=False)
-json.dump(metrics, open(METRICS_OUT, "w"), indent=2)
-dump(pipe, MODEL_OUT)
+        y_prob = pipe.predict_proba(X_eval)[:, 1]
+        metrics = offline_metrics(y_eval, y_prob)
+        cal = calibration_table(y_eval, y_prob)
 
 
-print("✅ Baseline LR trained")
-print(metrics)
+        pd.DataFrame(cal).to_csv(CALIB_OUT, index=False)
+        json.dump(metrics, open(METRICS_OUT, "w"), indent=2)
+        dump(pipe, MODEL_OUT)
+
+
+        print("✅ Baseline LR trained")
+        print(metrics)
+
+if __name__ == "__main__":
+    lr_main()

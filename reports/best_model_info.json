@@ -1,0 +1,9 @@
+{
+  "best_model": "logistic",
+  "path": "models/best_model.pkl",
+  "metrics": {
+    "auc": 0.5895247591217817,
+    "log_loss": 0.11984538533246777,
+    "brier": 0.025283367936654734
+  }
+}
