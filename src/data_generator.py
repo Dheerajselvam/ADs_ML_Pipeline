@@ -6,7 +6,7 @@ from datetime import datetime
 random.seed(42)
 
 
-N = 10000
+N = 20000
 OUTPUT = "data/raw/synthetic_ads.csv"
 
 

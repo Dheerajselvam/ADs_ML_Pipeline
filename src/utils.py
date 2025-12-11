@@ -3,9 +3,8 @@ import json
 import numpy as np
 
 def hash_to_int(x, salt="ads_experiment"):
-    """Deterministic hash to int (0..2**31-1)."""
-    h = hashlib.md5(f"{x}-{salt}".encode("utf-8")).hexdigest()
-    return int(h[:8], 16)
+    h = hashlib.sha256(f"{x}-{salt}".encode("utf-8")).hexdigest()
+    return int(h, 16)
 
 def assign_user(user_id, pct_treatment=0.5, salt="ads_experiment"):
     """Deterministically assign user to treatment/control."""

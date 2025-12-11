@@ -2,48 +2,48 @@ MODEL COMPARISON REPORT
 
 --- logistic ---
 {
-  "auc": 0.5744945506239141,
-  "log_loss": 0.12051058232139539,
-  "brier": 0.025341236276165434
+  "auc": 0.5895247591217817,
+  "log_loss": 0.11984538533246777,
+  "brier": 0.025283367936654734
 }
-Baseline CTR: 0.0260, Top decile CTR: 0.0200
+Baseline CTR: 0.0260, Top decile CTR: 0.0450
 Calibration (first 3 buckets):
-{'bucket': 0, 'avg_pred': np.float64(0.01252598681084902), 'avg_true': np.float64(0.025), 'count': 200}
-{'bucket': 1, 'avg_pred': np.float64(0.015403658496443522), 'avg_true': np.float64(0.02), 'count': 200}
-{'bucket': 2, 'avg_pred': np.float64(0.01790747986206534), 'avg_true': np.float64(0.005), 'count': 200}
+{'bucket': 0, 'avg_pred': np.float64(0.010973400999003222), 'avg_true': np.float64(0.0225), 'count': 400}
+{'bucket': 1, 'avg_pred': np.float64(0.013268967575289175), 'avg_true': np.float64(0.0125), 'count': 400}
+{'bucket': 2, 'avg_pred': np.float64(0.015331222265769395), 'avg_true': np.float64(0.015), 'count': 400}
 Confusion Matrix:
-[[1948    0]
- [  52    0]]
+[[3896    0]
+ [ 104    0]]
 --- gbt ---
 {
-  "auc": 0.47562588848523135,
-  "log_loss": 0.16447842623653822,
-  "brier": 0.02749283743578581
+  "auc": 0.5395412948191439,
+  "log_loss": 0.12251975896674874,
+  "brier": 0.025526626506254077
 }
-Baseline CTR: 0.0260, Top decile CTR: 0.0100
+Baseline CTR: 0.0260, Top decile CTR: 0.0225
 Calibration (first 3 buckets):
-{'bucket': 0, 'avg_pred': np.float64(0.0002639909138162521), 'avg_true': np.float64(0.025), 'count': 200}
-{'bucket': 1, 'avg_pred': np.float64(0.0007542155635866473), 'avg_true': np.float64(0.02), 'count': 200}
-{'bucket': 2, 'avg_pred': np.float64(0.0012996225212772827), 'avg_true': np.float64(0.02), 'count': 200}
+{'bucket': 0, 'avg_pred': np.float64(0.010302537753760346), 'avg_true': np.float64(0.015), 'count': 400}
+{'bucket': 1, 'avg_pred': np.float64(0.012380964951254972), 'avg_true': np.float64(0.03), 'count': 400}
+{'bucket': 2, 'avg_pred': np.float64(0.01419560637994755), 'avg_true': np.float64(0.0175), 'count': 400}
 Confusion Matrix:
-[[1944    4]
- [  52    0]]
+[[3896    0]
+ [ 104    0]]
 --- dnn ---
 {
-  "auc": 0.5472871584267889,
-  "log_loss": 0.16203114121379683,
-  "brier": 0.02960171696876539
+  "auc": 0.5031985468330438,
+  "log_loss": 0.18597541311893287,
+  "brier": 0.026913440982531938
 }
-Baseline CTR: 0.0260, Top decile CTR: 0.0300
+Baseline CTR: 0.0260, Top decile CTR: 0.0400
 Calibration (first 3 buckets):
-{'bucket': 0, 'avg_pred': np.float64(1.545850771051081e-05), 'avg_true': np.float64(0.01), 'count': 200}
-{'bucket': 1, 'avg_pred': np.float64(0.00032380939162624537), 'avg_true': np.float64(0.03), 'count': 200}
-{'bucket': 2, 'avg_pred': np.float64(0.0012616105939310535), 'avg_true': np.float64(0.025), 'count': 200}
+{'bucket': 0, 'avg_pred': np.float64(4.046965819267509e-06), 'avg_true': np.float64(0.03), 'count': 400}
+{'bucket': 1, 'avg_pred': np.float64(0.0002366059146848213), 'avg_true': np.float64(0.0275), 'count': 400}
+{'bucket': 2, 'avg_pred': np.float64(0.0012265701433035584), 'avg_true': np.float64(0.025), 'count': 400}
 Confusion Matrix:
-[[1944    4]
- [  52    0]]
+[[3890    6]
+ [ 104    0]]
 
-ERROR ANALYSIS: sample disagreement examples (logistic vs gbt)
+ERROR ANALYSIS: sample disagreement examples (logistic vs gbt) and (gbt vs dnn)
 
 Indices where logistic very positive but gbt negative: []
-Indices where GBT very positive but DNN negative: [np.int64(238), np.int64(518), np.int64(1542), np.int64(1881)]
+Indices where GBT very positive but DNN negative: []

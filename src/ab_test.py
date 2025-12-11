@@ -31,7 +31,7 @@ OUT_JSON = "reports/ab_results.json"
 # Config
 TREATMENT_PCT = 0.5
 EVAL_DELAY_WINDOW = 0
-BOOTSTRAP_ITERS = 5000
+BOOTSTRAP_ITERS = 10000
 ALPHA = 0.05
 
 def try_load_model(path):
@@ -66,7 +66,7 @@ def two_sample_z_test(count1, n1, count2, n2):
     p = 2 * (1 - stats.norm.cdf(abs(z)))
     return {"z": float(z), "p_value": float(p), "p1": p1, "p2": p2}
 
-def bootstrap_mean_diff(a, b, iters=1000, seed=42):
+def bootstrap_mean_diff(a, b, iters=2000, seed=42):
     rng = np.random.RandomState(seed)
     diffs = []
     a = np.array(a)

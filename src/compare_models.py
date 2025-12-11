@@ -1,6 +1,7 @@
 import joblib, json, pandas as pd, numpy as np
-from eval_utils import offline_metrics, calibration_table, prepare_dicts
+from eval_utils import offline_metrics, calibration_table
 from sklearn.metrics import classification_report, confusion_matrix
+from utils import prepare_dicts
 from pathlib import Path
 
 EVAL = "data/processed/eval.csv"

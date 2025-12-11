@@ -5,6 +5,7 @@ from sklearn.feature_extraction import DictVectorizer
 from sklearn.pipeline import Pipeline
 from sklearn.preprocessing import FunctionTransformer
 from utils import prepare_dicts, to_dense
+from eval_utils import offline_metrics, calibration_table
 import json
 
 TRAIN = "data/processed/train.csv"
