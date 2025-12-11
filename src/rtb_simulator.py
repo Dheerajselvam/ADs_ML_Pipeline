@@ -1,4 +1,3 @@
-# src/rtb_simulator.py
 """
 RTB Simulator:
 - For each impression, compute bids submitted by advertisers.
@@ -14,6 +13,8 @@ import os
 from joblib import load
 from utils import save_json
 import random
+from data_generator import base_ctr
+
 random.seed(42)
 np.random.seed(42)
 
@@ -36,13 +37,6 @@ def try_load_model(path):
             print("Could not load model:", e)
     return None
 
-def base_ctr(age, interest, creative, hour):
-    ctr = 0.01
-    if interest == "tech": ctr += 0.02
-    if creative == "video": ctr += 0.015
-    if age == "25-34": ctr += 0.01
-    if 18 <= hour <= 22: ctr += 0.005
-    return min(0.4, ctr)
 
 def make_bid(advertiser_bid, pctr, budget_remaining, baseline_p=0.02):
     """
@@ -115,7 +109,7 @@ def run_rtb_sim(data_path=DATA_IN, model_path=MODEL_PATH, out_json=OUT_JSON):
     advertisers_bids = {int(a): float(0.5 + (int(a) % 10) * 0.1) for a in advertisers}  # varied base bids
     advertiser_budgets = {int(a): float(BUDGET_PER_ADVERTISER) for a in advertisers}
 
-    logs = []
+    logs = []   
     for _, row in df.iterrows():
         res = simulate_auction(row, model_pipe, advertisers_bids, advertiser_budgets)
         log = {
@@ -140,6 +134,7 @@ def run_rtb_sim(data_path=DATA_IN, model_path=MODEL_PATH, out_json=OUT_JSON):
     ).reset_index()
     agg["ctr"] = agg["clicks"] / agg["impressions"]
     agg["rpm"] = (agg["revenue"] / agg["impressions"]) * 1000
+
     # global metrics
     total_impr = len(logs_df[logs_df["won"]==True])
     total_rev = logs_df["revenue"].sum()

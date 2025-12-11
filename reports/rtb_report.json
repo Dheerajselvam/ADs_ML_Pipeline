@@ -1,0 +1,188 @@
+{
+  "total_impressions_served": 1214,
+  "total_revenue": 18.0,
+  "global_ctr": 0.014827018121911038,
+  "global_rpm": 14.827018121911038,
+  "per_advertiser": [
+    {
+      "advertiser": 0,
+      "impressions": 109,
+      "clicks": 4,
+      "revenue": 4.0,
+      "spend": 68.7035,
+      "ctr": 0.03669724770642202,
+      "rpm": 36.69724770642202
+    },
+    {
+      "advertiser": 1,
+      "impressions": 106,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 72.4691,
+      "ctr": 0.009433962264150943,
+      "rpm": 9.433962264150942
+    },
+    {
+      "advertiser": 2,
+      "impressions": 84,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 52.7458,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 3,
+      "impressions": 77,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 66.3123,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 4,
+      "impressions": 66,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 52.9444,
+      "ctr": 0.015151515151515152,
+      "rpm": 15.151515151515152
+    },
+    {
+      "advertiser": 5,
+      "impressions": 43,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 39.568400000000004,
+      "ctr": 0.023255813953488372,
+      "rpm": 23.25581395348837
+    },
+    {
+      "advertiser": 6,
+      "impressions": 40,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 37.0868,
+      "ctr": 0.025,
+      "rpm": 25.0
+    },
+    {
+      "advertiser": 7,
+      "impressions": 26,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 22.464199999999998,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 8,
+      "impressions": 29,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 29.8181,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 9,
+      "impressions": 20,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 21.6821,
+      "ctr": 0.05,
+      "rpm": 50.0
+    },
+    {
+      "advertiser": 10,
+      "impressions": 100,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 69.8311,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 11,
+      "impressions": 96,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 71.0953,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 12,
+      "impressions": 96,
+      "clicks": 2,
+      "revenue": 2.0,
+      "spend": 65.7522,
+      "ctr": 0.020833333333333332,
+      "rpm": 20.833333333333332
+    },
+    {
+      "advertiser": 13,
+      "impressions": 71,
+      "clicks": 3,
+      "revenue": 3.0,
+      "spend": 46.5929,
+      "ctr": 0.04225352112676056,
+      "rpm": 42.25352112676056
+    },
+    {
+      "advertiser": 14,
+      "impressions": 69,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 57.6379,
+      "ctr": 0.014492753623188406,
+      "rpm": 14.492753623188406
+    },
+    {
+      "advertiser": 15,
+      "impressions": 57,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 52.7847,
+      "ctr": 0.017543859649122806,
+      "rpm": 17.543859649122805
+    },
+    {
+      "advertiser": 16,
+      "impressions": 36,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 29.5363,
+      "ctr": 0.0,
+      "rpm": 0.0
+    },
+    {
+      "advertiser": 17,
+      "impressions": 39,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 38.8292,
+      "ctr": 0.02564102564102564,
+      "rpm": 25.64102564102564
+    },
+    {
+      "advertiser": 18,
+      "impressions": 27,
+      "clicks": 1,
+      "revenue": 1.0,
+      "spend": 35.0659,
+      "ctr": 0.037037037037037035,
+      "rpm": 37.03703703703704
+    },
+    {
+      "advertiser": 19,
+      "impressions": 23,
+      "clicks": 0,
+      "revenue": 0.0,
+      "spend": 23.7733,
+      "ctr": 0.0,
+      "rpm": 0.0
+    }
+  ]
+}
